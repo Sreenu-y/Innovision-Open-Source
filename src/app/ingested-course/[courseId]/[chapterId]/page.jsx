@@ -448,7 +448,16 @@ export default function IngestedChapterPage() {
                                             <span className="shrink-0 w-8 h-8 rounded-lg bg-yellow-500/10 text-yellow-600 dark:text-yellow-400 flex items-center justify-center text-sm font-bold border border-yellow-500/20 group-hover:scale-110 transition-transform">
                                                 {i + 1}
                                             </span>
-                                            <span className="text-base leading-7 font-medium pt-0.5">{tip.replace(/^[-•*]\s*/, '')}</span>
+                                            <div className="text-base leading-7 font-medium pt-0.5 flex-1">
+                                                <ReactMarkdown
+                                                    components={{
+                                                        p: ({ children }) => <p className="m-0">{children}</p>,
+                                                        strong: ({ children }) => <strong className="font-bold text-foreground">{children}</strong>,
+                                                    }}
+                                                >
+                                                    {tip.replace(/^[-•]\s*/, "")}
+                                                </ReactMarkdown>
+                                            </div>
                                         </li>
                                     ))}
                                 </ul>
